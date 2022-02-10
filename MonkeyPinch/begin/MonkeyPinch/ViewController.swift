@@ -31,10 +31,29 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
     
+  @IBAction func handlePan(_ gesture: UIPanGestureRecognizer) {
+    
+    let translation = gesture.translation(in: view)
+    
+    guard let gestureView = gesture.view else {
+      return
+    }
+    
+    gestureView.center = CGPoint (
+      x: gestureView.center.x + translation.x,
+      y: gestureView.center.y + translation.y
+    )
+    
+    gesture.setTranslation(.zero, in: view)
+    print("he")
+  }
+
+  
   @IBAction func handlePinch(_ gesture: UIPinchGestureRecognizer) {
   }
   
